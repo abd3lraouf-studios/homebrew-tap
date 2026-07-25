@@ -15,11 +15,23 @@ brew tap App-Builders-Gang/tap
 brew install --cask <app-name>
 ```
 
+Command-line tools are formulae, not casks — install those without `--cask`:
+
+```bash
+brew install App-Builders-Gang/tap/<tool-name>
+```
+
 ## Available apps
 
 | App | Install | Description |
 |---|---|---|
 | **[PrayerTimes](https://github.com/App-Builders-Gang/PrayerTimes)** | `brew install --cask App-Builders-Gang/tap/prayertimes` | Prayer times in your Mac's menu bar |
+
+## Available command-line tools
+
+| Tool | Install | Description |
+|---|---|---|
+| **[macos-touchid-sudo](https://github.com/App-Builders-Gang/macos-touchid-sudo)** | `brew install App-Builders-Gang/tap/macos-touchid-sudo` | Authenticate `sudo` with Touch ID, including inside tmux |
 
 ## Update installed apps
 
@@ -75,6 +87,40 @@ brew uninstall --cask <app-name>
    for a working example.
 
 4. Add an entry to the **Available apps** table above.
+
+## For maintainers — adding a new command-line tool
+
+Formulae go in `Formula/<tool-name>.rb` and build from a source tarball rather
+than a `.dmg`:
+
+```ruby
+class MyTool < Formula
+  desc "One-line description"
+  homepage "https://github.com/App-Builders-Gang/my-tool"
+  url "https://github.com/App-Builders-Gang/my-tool/archive/refs/tags/v1.0.0.tar.gz"
+  sha256 "<shasum -a 256 of the tarball>"
+  license "MIT"
+
+  def install
+    bin.install "bin/my-tool"
+  end
+
+  test do
+    assert_match "my-tool", shell_output("#{bin}/my-tool --version")
+  end
+end
+```
+
+Validate the same way, minus the cask flag:
+
+```bash
+brew audit --new --formula Formula/<tool-name>.rb
+brew style Formula/<tool-name>.rb
+brew install --build-from-source Formula/<tool-name>.rb
+brew test <tool-name>
+```
+
+Then add a row to the **Available command-line tools** table.
 
 ## License
 
