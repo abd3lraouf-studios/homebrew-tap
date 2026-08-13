@@ -2,10 +2,10 @@ cask "prayertimes" do
   version "2.0.0"
   sha256 "afbf9b6e75f7e20c259865b611aa1bc9a2d8bdd643f837a55d3688202533facb"
 
-  url "https://github.com/App-Builders-Gang/PrayerTimes/releases/download/v#{version}/PrayerTimes-#{version}.dmg"
+  url "https://github.com/abd3lraouf-studios/PrayerTimes/releases/download/v#{version}/PrayerTimes-#{version}.dmg"
   name "PrayerTimes"
   desc "Menu bar app for Islamic prayer times with Hijri calendar"
-  homepage "https://github.com/App-Builders-Gang/PrayerTimes"
+  homepage "https://github.com/abd3lraouf-studios/PrayerTimes"
 
   livecheck do
     url :url

@@ -1,37 +1,37 @@
-# App Builders Gang — Homebrew Tap
+# abd3lraouf Studios — Homebrew Tap
 
-Official Homebrew tap for apps by [App Builders Gang](https://github.com/App-Builders-Gang).
+Official Homebrew tap for apps by [abd3lraouf Studios](https://github.com/abd3lraouf-studios).
 
 ## Install any app from this tap
 
 ```bash
-brew install --cask App-Builders-Gang/tap/<app-name>
+brew install --cask abd3lraouf-studios/tap/<app-name>
 ```
 
 Or, tap once and install by short name:
 
 ```bash
-brew tap App-Builders-Gang/tap
+brew tap abd3lraouf-studios/tap
 brew install --cask <app-name>
 ```
 
 Command-line tools are formulae, not casks — install those without `--cask`:
 
 ```bash
-brew install App-Builders-Gang/tap/<tool-name>
+brew install abd3lraouf-studios/tap/<tool-name>
 ```
 
 ## Available apps
 
 | App | Install | Description |
 |---|---|---|
-| **[PrayerTimes](https://github.com/App-Builders-Gang/PrayerTimes)** | `brew install --cask App-Builders-Gang/tap/prayertimes` | Prayer times in your Mac's menu bar |
+| **[PrayerTimes](https://github.com/abd3lraouf-studios/PrayerTimes)** | `brew install --cask abd3lraouf-studios/tap/prayertimes` | Prayer times in your Mac's menu bar |
 
 ## Available command-line tools
 
 | Tool | Install | Description |
 |---|---|---|
-| **[macos-touchid-sudo](https://github.com/App-Builders-Gang/macos-touchid-sudo)** | `brew install App-Builders-Gang/tap/macos-touchid-sudo` | Authenticate `sudo` with Touch ID, including inside tmux |
+| **[macos-touchid-sudo](https://github.com/abd3lraouf-studios/macos-touchid-sudo)** | `brew install abd3lraouf-studios/tap/macos-touchid-sudo` | Authenticate `sudo` with Touch ID, including inside tmux |
 
 ## Update installed apps
 
@@ -54,10 +54,10 @@ brew uninstall --cask <app-name>
      version "1.0.0"
      sha256 "<sha256 of the .dmg>"
 
-     url "https://github.com/App-Builders-Gang/MyApp/releases/download/v#{version}/MyApp-#{version}.dmg"
+     url "https://github.com/abd3lraouf-studios/MyApp/releases/download/v#{version}/MyApp-#{version}.dmg"
      name "MyApp"
      desc "One-line description"
-     homepage "https://github.com/App-Builders-Gang/MyApp"
+     homepage "https://github.com/abd3lraouf-studios/MyApp"
 
      livecheck do
        url :url
@@ -83,7 +83,7 @@ brew uninstall --cask <app-name>
    ```
 
 3. Each app's release workflow should bump its own cask here on tag push. See
-   [PrayerTimes/.github/workflows/release.yml](https://github.com/App-Builders-Gang/PrayerTimes/blob/main/.github/workflows/release.yml)
+   [PrayerTimes/.github/workflows/release.yml](https://github.com/abd3lraouf-studios/PrayerTimes/blob/main/.github/workflows/release.yml)
    for a working example.
 
 4. Add an entry to the **Available apps** table above.
@@ -96,8 +96,8 @@ than a `.dmg`:
 ```ruby
 class MyTool < Formula
   desc "One-line description"
-  homepage "https://github.com/App-Builders-Gang/my-tool"
-  url "https://github.com/App-Builders-Gang/my-tool/archive/refs/tags/v1.0.0.tar.gz"
+  homepage "https://github.com/abd3lraouf-studios/my-tool"
+  url "https://github.com/abd3lraouf-studios/my-tool/archive/refs/tags/v1.0.0.tar.gz"
   sha256 "<shasum -a 256 of the tarball>"
   license "MIT"
 

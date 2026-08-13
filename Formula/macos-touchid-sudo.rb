@@ -1,10 +1,10 @@
 class MacosTouchidSudo < Formula
   desc "Authenticate sudo with Touch ID on macOS, including inside tmux"
-  homepage "https://github.com/App-Builders-Gang/macos-touchid-sudo"
-  url "https://github.com/App-Builders-Gang/macos-touchid-sudo/archive/refs/tags/v1.0.0.tar.gz"
+  homepage "https://github.com/abd3lraouf-studios/macos-touchid-sudo"
+  url "https://github.com/abd3lraouf-studios/macos-touchid-sudo/archive/refs/tags/v1.0.0.tar.gz"
   sha256 "cd0e761b660e9f24a636d4668270379c759782e5c41bc842eaf091afdb8bf711"
   license "MIT"
-  head "https://github.com/App-Builders-Gang/macos-touchid-sudo.git", branch: "main"
+  head "https://github.com/abd3lraouf-studios/macos-touchid-sudo.git", branch: "main"
 
   livecheck do
     url :stable
