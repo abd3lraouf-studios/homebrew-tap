@@ -23,9 +23,13 @@ brew install abd3lraouf-studios/tap/<tool-name>
 
 ## Available apps
 
-| App | Install | Description |
-|---|---|---|
-| **[PrayerTimes](https://github.com/abd3lraouf-studios/PrayerTimes)** | `brew install --cask abd3lraouf-studios/tap/prayertimes` | Prayer times in your Mac's menu bar |
+_None right now._
+
+PrayerTimes used to be distributed here. It now ships exclusively through the
+[Mac App Store](https://apps.apple.com/app/id6763390896), so its cask is
+disabled and `brew install --cask prayertimes` will tell you where to go. The
+file stays in `Casks/` so that anyone who still has it installed can
+`brew uninstall` and `brew zap` cleanly.
 
 ## Available command-line tools
 
@@ -64,6 +68,8 @@ brew uninstall --cask <app-name>
        strategy :github_latest
      end
 
+     depends_on :macos
+
      app "MyApp.app"
 
      uninstall quit: "dev.abd3lraouf.MyApp"
@@ -74,6 +80,18 @@ brew uninstall --cask <app-name>
      ]
    end
    ```
+
+   Keep to that DSL. In particular, a cask installs an app — it does not run
+   one. No `postflight` that calls `open`, and no `xattr -d com.apple.quarantine`:
+   stripping quarantine defeats Gatekeeper, and a properly notarized build does
+   not need it. Anything the user must opt into belongs in `caveats`, the way
+   `Formula/macos-touchid-sudo.rb` asks them to run `sudo touchid-sudo`
+   themselves rather than editing `/etc/pam.d/sudo` at install time.
+
+   Likewise, leave user data alone on uninstall. `uninstall` removes the app;
+   `zap` removes preferences, caches and containers. Deleting a prefs domain or
+   resetting TCC in an `uninstall_postflight` breaks that split — someone who
+   uninstalls and reinstalls expects their settings to survive.
 
 2. Validate locally before pushing:
 

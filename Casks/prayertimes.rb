@@ -9,30 +9,18 @@ cask "prayertimes" do
 
   disable! date: "2026-08-16", because: :moved_to_mas
 
-  app "PrayerTimes.app"
+  depends_on :macos
 
-  uninstall_preflight do
-    # Reset all permissions (location, notifications, etc.) while app is still registered
-    system_command "/usr/bin/tccutil",
-                   args: ["reset", "All", "dev.abd3lraouf.PrayerTimes"],
-                   sudo: false
-  end
+  app "PrayerTimes.app"
 
   uninstall quit:       "dev.abd3lraouf.PrayerTimes",
             login_item: "PrayerTimes"
 
-  uninstall_postflight do
-    # Flush cfprefsd cached preferences domain
-    system_command "/usr/bin/defaults",
-                   args: ["delete", "dev.abd3lraouf.PrayerTimes"],
-                   sudo: false
-  end
-
   zap trash: [
+    "~/Library/Caches/dev.abd3lraouf.PrayerTimes",
     "~/Library/Containers/dev.abd3lraouf.PrayerTimes",
+    "~/Library/HTTPStorages/dev.abd3lraouf.PrayerTimes",
     "~/Library/Preferences/dev.abd3lraouf.PrayerTimes.plist",
     "~/Library/Saved Application State/dev.abd3lraouf.PrayerTimes.savedState",
-    "~/Library/HTTPStorages/dev.abd3lraouf.PrayerTimes",
-    "~/Library/Caches/dev.abd3lraouf.PrayerTimes",
   ]
 end
