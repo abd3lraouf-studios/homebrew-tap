@@ -7,21 +7,9 @@ cask "prayertimes" do
   desc "Menu bar app for Islamic prayer times with Hijri calendar"
   homepage "https://github.com/abd3lraouf-studios/PrayerTimes"
 
-  livecheck do
-    url :url
-    strategy :github_latest
-  end
+  disable! date: "2026-08-16", because: :moved_to_mas
 
   app "PrayerTimes.app"
-
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-r", "-d", "com.apple.quarantine", "#{appdir}/PrayerTimes.app"],
-                   sudo: false
-    system_command "/usr/bin/open",
-                   args: ["#{appdir}/PrayerTimes.app"],
-                   sudo: false
-  end
 
   uninstall_preflight do
     # Reset all permissions (location, notifications, etc.) while app is still registered
@@ -48,4 +36,3 @@ cask "prayertimes" do
     "~/Library/Caches/dev.abd3lraouf.PrayerTimes",
   ]
 end
-
