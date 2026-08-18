@@ -7,8 +7,6 @@ cask "prayertimes" do
   desc "Menu bar app for Islamic prayer times with Hijri calendar"
   homepage "https://github.com/abd3lraouf-studios/PrayerTimes"
 
-  disable! date: "2026-08-16", because: :moved_to_mas
-
   depends_on :macos
 
   app "PrayerTimes.app"
