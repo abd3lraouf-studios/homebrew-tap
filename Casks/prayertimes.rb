@@ -14,6 +14,11 @@ cask "prayertimes" do
   uninstall quit:       "dev.abd3lraouf.PrayerTimes",
             login_item: "PrayerTimes"
 
+  caveats <<~EOS
+    PrayerTimes is a Mac app, not a terminal command.
+    Open it with `open -a PrayerTimes` or from Applications.
+  EOS
+
   zap trash: [
     "~/Library/Caches/dev.abd3lraouf.PrayerTimes",
     "~/Library/Containers/dev.abd3lraouf.PrayerTimes",
